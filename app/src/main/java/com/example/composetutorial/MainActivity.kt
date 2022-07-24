@@ -19,22 +19,25 @@ class MainActivity : ComponentActivity() {
             ComposeTutorialTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    MessageCard(Message("Android", "Jetpack Compose"))
                 }
             }
         }
     }
 }
 
+data class Message(val author: String, val body: String)
+
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun MessageCard(msg: Message) {
+    Text(text = msg.author)
+    Text(text = msg.body)
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ComposeTutorialTheme {
-        Greeting("Android")
+        MessageCard(Message("Android", "Jetpack Compose"))
     }
 }
